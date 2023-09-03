@@ -50,7 +50,7 @@ public class F03_Search
     public void theFinalResultsShouldMatchTheSelectedFilterAndSearchKeywords(String search_text)
     {
 
-        search_text= driver.findElement(By.xpath("//*[contains(text(),'Apple iCam')]")).getText();
+        search_text= SearchPage.TextMatchTheSelectedSearch().getText();
         Assert.assertEquals(search_text,"Apple iCam");
     }
 }

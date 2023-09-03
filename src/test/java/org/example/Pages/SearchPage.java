@@ -32,4 +32,9 @@ public class SearchPage
     {
         return driver.findElement(By.cssSelector("[class=\"button-1 search-button\"]"));
     }
+
+    public static WebElement TextMatchTheSelectedSearch()
+    {
+        return driver.findElement(By.xpath("//*[contains(text(),'Apple iCam')]"));
+    }
 }

@@ -43,8 +43,6 @@ public class F04_Add_To_Cart
        Actions action=new Actions(driver);
        action.moveToElement(Add_to_cart_button).click().build().perform();
 
-     //press add to cart button
-     //Add_To_Cart_Page.Another_Add_To_Cart_Btn();
    }
     @Then("The product is added to the shopping cart")
     public void theProductIsAddedToTheShoppingCart()

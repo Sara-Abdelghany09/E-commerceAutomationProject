@@ -40,9 +40,17 @@ public class F02_Login
     {
       //Confirm that user login to the system successfully
         String expected_login="My account";
-        String actual_login=driver.findElement(By.xpath("//*[contains(text(),'My account')]")).getText();
+        String actual_login=LoginPage.ViewMyAccountText().getText();
         Assert.assertEquals(actual_login,expected_login);
-       // driver.findElement(By.linkText("Log out")).click();
+        // LoginPage.clickonlogout().click();
+
+    }
+    @When("the user fills invalid email as {string} and password {string} and clicks on login")
+    public void theUserFillsInvalidEmailAsAndPasswordAndClicksOnLogin(String email, String password)
+    {
+        LoginPage.Email_Field().sendKeys(email);
+        LoginPage.Password_Field().sendKeys(password);
+        LoginPage.Login_Btn().click();
 
     }
     @Then("Error message is displayed")
@@ -50,8 +58,8 @@ public class F02_Login
     {
         //Confirm that user could not log in to the system
         String expected_invalid_text="Login was unsuccessful. Please correct the errors and try again.\n" +
-                "The credentials provided are incorrect";
-        WebElement element_Text=driver.findElement(By.cssSelector("[class=\"message-error validation-summary-errors\"]"));
+                "No customer account found";
+        WebElement element_Text=LoginPage.Login_invalid_errorMessage();
         String actual_invalid_text=element_Text.getText();
 
         System.out.println("The invalid text :  "+actual_invalid_text);
@@ -59,10 +67,12 @@ public class F02_Login
         //check the error message color is red
 
         //retrieve color
-        String rgbaColor =driver.findElement(By.cssSelector("[class=\"message-error validation-summary-errors\"]")).getCssValue("color");
+        String rgbaColor =LoginPage.Login_invalid_errorMessage().getCssValue("color");
         String actualColor= Color.fromString(rgbaColor).asHex();
         System.out.println("actualColor");
         Assert.assertEquals(actualColor,"#e4434b");
+        soft.assertAll();
 
     }
+
 }

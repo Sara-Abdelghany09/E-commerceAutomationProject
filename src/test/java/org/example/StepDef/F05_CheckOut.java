@@ -86,39 +86,40 @@ public class F05_CheckOut
     @And("The user selects the shipping method and clicks on Continue")
     public void theUserSelectsTheShippingMethodAndClicksOnContinue()
     {
-        driver.findElement(By.cssSelector("[class=\"button-1 shipping-method-next-step-button\"]")).click();
+
+        CheckOut_Page.theUserSelectsTheShippingMethod().click();
     }
 
     @And("The user selects the payment method by money order and clicks on Continue")
     public void theUserSelectsThePaymentMethodAndClicksOnContinue()
     {
         //Check / Money Order
-        driver.findElement(By.id("paymentmethod_0")).click();
-        driver.findElement(By.cssSelector("[class=\"button-1 payment-method-next-step-button\"]")).click();
+        CheckOut_Page.theUserSelectsTheSPaymentMethod().click();
+        CheckOut_Page.Clickoncontinueforpayment().click();
     }
 
     @And("The user add the payment method details for Money order")
     public void theUserAddThePaymentMethodDetails()
     {
         ////class="button-1 payment-method-next-step-button"
-        driver.findElement(By.cssSelector("[class=\"button-1 payment-info-next-step-button\"]")).click();
+        CheckOut_Page.Clickonnextcontinueforpayment().click();
     }
 
     @And("The guest user clicks on Confirm")
     public void theGuestUserClicksOnConfirm()
     {
-        driver.findElement(By.cssSelector("[class=\"button-1 confirm-order-next-step-button\"]")).click();
+        CheckOut_Page.ConfirmOrder().click();
     }
 
     @Then("The order is confirmed and the user can navigate to order details")
     public void theOrderIsConfirmedAndTheUserCanNavigateToOrderDetails()
     {
         //•	Order Number is showing
-        boolean result=driver.findElement(By.xpath("//*[contains(text(),'Order number')]")).isDisplayed();
+        boolean result=CheckOut_Page.OrderNumber().isDisplayed();
         Assert.assertTrue(result);
         //•	Order is successfully placed then the shopping cart is empty
         String Expected_text="Your order has been successfully processed!";
-        String Actual_text=driver.findElement(By.xpath("//*[contains(text(),'Your order has been successfully processed!')]")).getText();
+        String Actual_text=CheckOut_Page.OrderSuccessfullyProcessedText().getText();
         Assert.assertEquals(Actual_text,Expected_text);
         soft.assertAll();
 
@@ -128,8 +129,8 @@ public class F05_CheckOut
     public void theUserSelectsThePaymentMethodByCreditCardAndClicksOnContinue()
     {
         //pay by Credit Card
-        driver.findElement(By.id("paymentmethod_1")).click();
-        driver.findElement(By.cssSelector("[class=\"button-1 payment-method-next-step-button\"]")).click();
+        CheckOut_Page.TheUserSelectsCreditCard().click();
+       CheckOut_Page.Clickoncontinueforpayment().click();
 
     }
 
@@ -148,7 +149,7 @@ public class F05_CheckOut
         select_year.selectByValue("2026");
         //enter card code
         CheckOut_Page.CardCode().sendKeys("22555");
-        driver.findElement(By.cssSelector("[class=\"button-1 payment-info-next-step-button\"]")).click();
+        CheckOut_Page.Clickonnextcontinueforpayment().click();
 
     }
 }

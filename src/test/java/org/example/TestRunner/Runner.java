@@ -6,7 +6,7 @@ import io.cucumber.testng.CucumberOptions;
         features = "C:\\Users\\sigma\\IdeaProjects\\GraduationProject\\src\\main\\resources\\Features",
         //glue  stepdef copy reference
         glue ="org.example.StepDef",
-        tags = "@Smoke",
+        //tags = "@Smoke",
         plugin = {"pretty",
                 "html:target/cucumber.html",
                 "json:target/cucumber.json",

@@ -75,12 +75,7 @@ public class F01_Register
     public void userEntersPasswordAndConfirmsIt( )
     {
         RegisterPage.Password_Field().sendKeys(password);
-
-//        String tempPassword=faker.internet().password();
-//       RegisterPage.Password_Field().sendKeys(tempPassword);
         RegisterPage.Confirm_Password_Field().sendKeys(password);
-//       RegisterPage.Password_Field().sendKeys(password);
-//        RegisterPage.Confirm_Password_Field().sendKeys(confirm_password);
         System.out.println(Email +"=="+password);
     }
 

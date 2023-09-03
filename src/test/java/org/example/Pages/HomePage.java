@@ -31,5 +31,20 @@ public class HomePage
        return driver.findElement(By.cssSelector("[class=\"button-2 product-box-add-to-cart-button\"]"));
 
     }
+    //driver.findElement(By.id("customerCurrency")
+    public static WebElement Select_Currency()
+
+    {
+        return driver.findElement(By.id("customerCurrency"));
+
+    }
+    public static WebElement Show_Currency()
+
+    {
+        return driver.findElement(By.xpath("//*[contains(text(),'€')]"));
+
+    }
+
+    //driver.findElement(By.xpath("//*[contains(text(),'€')]"))
 
 }

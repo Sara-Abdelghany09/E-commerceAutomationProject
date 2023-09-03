@@ -16,5 +16,18 @@ public class LoginPage
     {
         return driver.findElement(By.cssSelector("[class=\"button-1 login-button\"]"));
     }
+    public static WebElement ViewMyAccountText()
+    {
+        return driver.findElement(By.xpath("//*[contains(text(),'My account')]"));
+    }
+    public static WebElement clickonlogout()
+    {
+        return driver.findElement(By.linkText("Log out"));
+    }
+    //errorMessage
+    public static WebElement Login_invalid_errorMessage()
+    {
+        return driver.findElement(By.cssSelector("[class=\"message-error validation-summary-errors\"]"));
+    }
 
 }
